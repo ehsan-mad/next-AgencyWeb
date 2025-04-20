@@ -87,6 +87,8 @@ export default function ContactPage() {
   };
 
   return (
+
+  
     <div className="min-h-screen relative overflow-hidden">
       {/* Gradient Background */}
       <div className="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-purple-50 dark:from-neutral-950 dark:via-blue-950/20 dark:to-purple-950/20 -z-10"></div>
