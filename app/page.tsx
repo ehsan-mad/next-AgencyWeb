@@ -1,4 +1,4 @@
-import { NavbarDemo } from "@/components/Navbar";
+
 import Image from "next/image";
 import { HeroSectionOne } from "./Hero";
 import Services from "./services";
