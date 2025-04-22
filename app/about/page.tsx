@@ -164,7 +164,7 @@ export default function AboutPage() {
             Let's discuss how we can help you achieve your business goals with a custom digital strategy.
           </p>
           <Link 
-            href="/contact" 
+            href="/services" 
             className="inline-block px-8 py-4 bg-gradient-to-r from-neutral-900 to-black dark:from-white dark:to-blue-300 text-white dark:text-black font-medium rounded-md hover:opacity-90 transition-all duration-300 hover:shadow-lg"
           >
             Get in Touch
