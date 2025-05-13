@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/resizable-navbar";
 import { useState } from "react";
 import Link from "next/link";
+import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 
 export default function NavbarComponent() {
   const navItems = [
@@ -41,8 +42,15 @@ export default function NavbarComponent() {
         <NavbarLogo />
         <NavItems items={navItems} />
         <div className="relative z-20 flex flex-row items-center justify-end gap-2">
-          <NavbarButton as={Link} href="/login" variant="secondary">Login</NavbarButton>
-          <NavbarButton as={Link} href="/book" variant="primary">Book a call</NavbarButton>
+          <SignedOut>
+            <SignInButton mode="modal">
+              <NavbarButton as="button" variant="secondary">Login</NavbarButton>
+            </SignInButton>
+          </SignedOut>
+          <SignedIn>
+            <UserButton afterSignOutUrl="/" />
+          </SignedIn>
+          <NavbarButton as={Link} href="/contact" variant="primary">Book a call</NavbarButton>
         </div>
       </NavBody>
 
@@ -64,18 +72,26 @@ export default function NavbarComponent() {
             </Link>
           ))}
           <div className="mt-4 flex w-full flex-col gap-4">
+            <SignedOut>
+              <SignInButton mode="modal">
+                <NavbarButton
+                  as="button"
+                  onClick={() => setIsOpen(false)}
+                  variant="secondary"
+                  className="w-full"
+                >
+                  Login
+                </NavbarButton>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <div className="flex items-center justify-center w-full mb-2">
+                <UserButton afterSignOutUrl="/" />
+              </div>
+            </SignedIn>
             <NavbarButton
               as={Link}
-              href="/login"
-              onClick={() => setIsOpen(false)}
-              variant="secondary"
-              className="w-full"
-            >
-              Login
-            </NavbarButton>
-            <NavbarButton
-              as={Link}
-              href="/book"
+              href="/contact"
               onClick={() => setIsOpen(false)}
               variant="primary"
               className="w-full"

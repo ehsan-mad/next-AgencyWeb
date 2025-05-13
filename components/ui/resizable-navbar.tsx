@@ -281,11 +281,40 @@ export const NavbarButton = ({
       "bg-gradient-to-b from-blue-500 to-blue-700 text-white shadow-[0px_2px_0px_0px_rgba(255,255,255,0.3)_inset]",
   };
 
-  if (Tag === "a") {
+  // Check if Tag is the Next.js Link component
+  if (Tag === Link) {
+    return (
+      <Link
+        href={href || "#"}
+        className={cn(baseStyles, variantStyles[variant], className)}
+        {...(props as any)}
+      >
+        {children}
+      </Link>
+    );
+  } else if (Tag === "a") {
     return (
       <a
         href={href}
         className={cn(baseStyles, variantStyles[variant], className)}
+        onClick={(e) => {
+          if (props.onClick) props.onClick(e);
+        }}
+        onMouseEnter={(e) => {
+          if (props.onMouseEnter) props.onMouseEnter(e);
+        }}
+        onTouchStart={(e) => {
+          if (props.onTouchStart) props.onTouchStart(e);
+        }}
+        {...(props as React.ComponentPropsWithoutRef<"a">)}onClick={(e) => {
+          if (props.onClick) props.onClick(e);
+        }}
+        onMouseEnter={(e) => {
+          if (props.onMouseEnter) props.onMouseEnter(e);
+        }}
+        onTouchStart={(e) => {
+          if (props.onTouchStart) props.onTouchStart(e);
+        }}
         {...(props as React.ComponentPropsWithoutRef<"a">)}
       >
         {children}
@@ -296,6 +325,15 @@ export const NavbarButton = ({
   return (
     <button
       className={cn(baseStyles, variantStyles[variant], className)}
+      onClick={(e) => {
+        if (props.onClick) props.onClick(e);
+      }}
+      onMouseEnter={(e) => {
+        if (props.onMouseEnter) props.onMouseEnter(e);
+      }}
+      onTouchStart={(e) => {
+        if (props.onTouchStart) props.onTouchStart(e);
+      }}
       {...(props as React.ComponentPropsWithoutRef<"button">)}
     >
       {children}

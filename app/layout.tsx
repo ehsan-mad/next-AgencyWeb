@@ -1,9 +1,15 @@
-
 import NavbarDemo from "@/components/Navbar";
 import "./globals.css";
 import Footer from "@/components/footer";
-import { Analytics } from "@vercel/analytics/react"
-
+import { Analytics } from "@vercel/analytics/react";
+import {
+  ClerkProvider,
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+} from "@clerk/nextjs";
 
 export default function RootLayout({
   children,
@@ -11,13 +17,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body >
-      <NavbarDemo />
-        {children}
-        <Analytics />
-        <Footer/>
-      </body>
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <body>
+          
+          <NavbarDemo />
+          {children}
+          <Analytics />
+          <Footer />
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
