@@ -293,28 +293,11 @@ export const NavbarButton = ({
       </Link>
     );
   } else if (Tag === "a") {
+    // Remove duplicated event handlers and just pass props directly
     return (
       <a
         href={href}
         className={cn(baseStyles, variantStyles[variant], className)}
-        onClick={(e) => {
-          if (props.onClick) props.onClick(e);
-        }}
-        onMouseEnter={(e) => {
-          if (props.onMouseEnter) props.onMouseEnter(e);
-        }}
-        onTouchStart={(e) => {
-          if (props.onTouchStart) props.onTouchStart(e);
-        }}
-        {...(props as React.ComponentPropsWithoutRef<"a">)}onClick={(e) => {
-          if (props.onClick) props.onClick(e);
-        }}
-        onMouseEnter={(e) => {
-          if (props.onMouseEnter) props.onMouseEnter(e);
-        }}
-        onTouchStart={(e) => {
-          if (props.onTouchStart) props.onTouchStart(e);
-        }}
         {...(props as React.ComponentPropsWithoutRef<"a">)}
       >
         {children}
@@ -325,15 +308,6 @@ export const NavbarButton = ({
   return (
     <button
       className={cn(baseStyles, variantStyles[variant], className)}
-      onClick={(e) => {
-        if (props.onClick) props.onClick(e);
-      }}
-      onMouseEnter={(e) => {
-        if (props.onMouseEnter) props.onMouseEnter(e);
-      }}
-      onTouchStart={(e) => {
-        if (props.onTouchStart) props.onTouchStart(e);
-      }}
       {...(props as React.ComponentPropsWithoutRef<"button">)}
     >
       {children}
