@@ -16,10 +16,7 @@ import {
 export default function Home() {
   return (
     <div className="min-h-screen">
-      <ClerkProvider>
-        
-       
-      </ClerkProvider>
+      
       <main className="flex justify-center flex-col bg-accent">
         <HeroSectionOne />
         <div className="bg-gradient-to-b from-[#fdfbfb] to-[#ebedee]">
